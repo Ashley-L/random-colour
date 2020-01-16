@@ -12,7 +12,7 @@ Let's start with one of the macro steps...
 */
 
 
-// MACRO STEP: 
+// MACRO STEP 1: 
 //   Generate a random RGB number
 // MICRO STEPS:
 //   1. Use the browser's "Inspect" tool to ensure that applying an rgb() style to the body will 
@@ -21,12 +21,11 @@ Let's start with one of the macro steps...
 //   4. Randomize 2 more numbers for green and blue
 //   5. Put them in the console to ensure they're not the same, refresh repeatedly
 //   6. Format the number into a string and test in the console: rgb(#, #, #)
+//   7. Make a variable for the full rgb values (from step 6)
 
-let colourRed =   Math.floor(Math.random() * 256);
-let colourGreen = Math.floor(Math.random() * 256);
-let colourBlue =  Math.floor(Math.random() * 256);
-
-console.log(`rgb(${colourRed}, ${colourGreen}, ${colourBlue})`);
+// let colourRed   = Math.floor(Math.random() * 256);
+// let colourGreen = Math.floor(Math.random() * 256);
+// let colourBlue  = Math.floor(Math.random() * 256);
 
 /*  Breakdown of the random number code (the right side of = assignment):
 - Math.random()
@@ -37,6 +36,12 @@ console.log(`rgb(${colourRed}, ${colourGreen}, ${colourBlue})`);
     Round the resulting number down (aka, floor! Note: "ceil" will round up) to create options 0-255
 */
 
+// console.log(`rgb(${colourRed}, ${colourGreen}, ${colourBlue})`);
+
+// let randomColour = `rgb(${colourRed}, ${colourGreen}, ${colourBlue})`;
+
+
+
 
 
 
@@ -45,3 +50,46 @@ console.log(`rgb(${colourRed}, ${colourGreen}, ${colourBlue})`);
 // - Once determined, break each step down into micro steps
 // - Test each macro solution in isolation (console output helps)
 // - Begin to combine the steps together to create a final solution (test as you go!)
+
+
+
+
+// MAJOR STEP 2:
+//   Get the background colour of the page
+// MICRO STEPS:
+//   1. Test w/ console to find the document's background colour
+//   2. Set that to equal to the rgb variable (randomColour)
+
+// console.log(document.body.style.backgroundColor=randomColour);
+
+
+// MAJOR STEP 3:
+//   Write the function
+// MICRO STEPS:
+//   1. Name the function
+//   2. Put all the variables inside
+//   3. Put the backgroundColour=randomColour equation inside
+
+function randomizeBodyBgColour () {
+    let colourRed    = Math.floor(Math.random() * 256);
+    let colourGreen  = Math.floor(Math.random() * 256);
+    let colourBlue   = Math.floor(Math.random() * 256);
+    let randomColour = `rgb(${colourRed}, ${colourGreen}, ${colourBlue})`;
+
+    document.body.style.backgroundColor=randomColour;
+    document.getElementById(`colourCode`).innerHTML=randomColour
+
+    // document.getElementById(`bodyBackground`)=randomColour;
+}
+
+
+// MAJOR STEP 4:
+//   Write the executable
+// MICRO STEPS:
+//   1. Add id to button so you can call it to click on it
+//   2. addEventListener to the button
+
+document.getElementById(`button`).addEventListener(`click`, randomizeBodyBgColour);
+
+
+
